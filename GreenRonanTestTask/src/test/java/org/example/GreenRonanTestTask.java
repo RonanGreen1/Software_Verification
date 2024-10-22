@@ -1,8 +1,10 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GreenRonanTestTask {
     @Test
@@ -34,7 +36,7 @@ class GreenRonanTestTask {
         Period period1 = new Period(23, 24);
         Period period2 = new Period(17, 24);
         assertEquals(1, period1.getDuration());
-        assertFalse(period1.overlapsWith(period2));
+        assertTrue(period1.overlapsWith(period2));
     }
 
     @Test
