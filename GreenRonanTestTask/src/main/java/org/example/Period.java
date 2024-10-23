@@ -1,8 +1,8 @@
 package org.example;
 
 public class Period {
-    private final int start;
-    private final int end;
+    final int start;
+    final int end;
 
     public Period(int start, int end) {
         if (start >= end || start < 0 || end > 24) {

@@ -67,11 +67,21 @@ class GreenRonanTestTask {
     }
 
     @Test
-    void validNoOverlap() {
-        Period period1 = new Period(8, 11);
-        Period period2 = new Period(17, 24);
-        assertEquals(3, period1.getDuration());
-        assertFalse(period1.overlapsWith(period2));
+    void validPeriodDuration() {
+        Period period1 = new Period(2, 10);
+        assertEquals(8, period1.getDuration());
+    }
+
+    @Test
+    void validMinimumBoundary() {
+        Period period1 = new Period(0, 1);
+        assertEquals(1, period1.getDuration());
+    }
+
+    @Test
+    void validMaximumBoundary() {
+        Period period1 = new Period(0, 24);
+        assertEquals(24, period1.getDuration());
     }
 
     @Test
@@ -89,4 +99,21 @@ class GreenRonanTestTask {
         assertEquals(15, period1.getDuration());
         assertTrue(period1.overlapsWith(period2));
     }
+
+    @Test
+    void validNoOverlapWithBoundariesTouching() {
+        Period period1 = new Period(5, 10);
+        Period period2 = new Period(10, 15);
+        assertEquals(5, period1.getDuration());
+        assertFalse(period1.overlapsWith(period2));
+    }
+
+    @Test
+    void validFullOverlap() {
+        Period period1 = new Period(4, 15);
+        Period period2 = new Period(6, 10);
+        assertEquals(11, period1.getDuration());
+        assertTrue(period1.overlapsWith(period2));
+    }
+
 }
