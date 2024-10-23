@@ -16,7 +16,7 @@ public class Period {
         return end - start;
     }
 
-    public boolean overlapsWith(Period other) {
-        return this.start < other.end && other.start < this.end;
+    public boolean overlapsWith(Period period) {
+        return this.start < period.end && period.start < this.end;
     }
 }
