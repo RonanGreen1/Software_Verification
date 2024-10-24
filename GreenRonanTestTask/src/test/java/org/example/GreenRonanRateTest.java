@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RateTest {
+public class GreenRonanRateTest {
 
     @Test
     public void validKind() {

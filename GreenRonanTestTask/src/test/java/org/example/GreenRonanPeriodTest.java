@@ -5,14 +5,24 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+import java.util.logging.Logger;
 
-class GreenRonanTestTask {
+class GreenRonanPeriodTest {
+
+    private static final Logger logger = Logger.getLogger("PeriodLogger");
+
     @Test
-    void validHoursForPeriod() {
+    void test_1_ValidHoursForPeriod1() {
         Period period1 = new Period(8, 10);
         Period period2 = new Period(17, 24);
-        assertEquals(2, period1.getDuration());
-        assertFalse(period1.overlapsWith(period2));
+        try {
+            assertEquals(2, period1.getDuration());
+            assertFalse(period1.overlapsWith(period2));
+            logger.info("Test 1 passed");
+        } catch (AssertionError e) {
+            logger.severe("Test 1 failed: " + e.getMessage());
+            throw e;
+        }
     }
 
     @Test
