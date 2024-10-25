@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GreenRonanRateTest {
+public class GreenRonanRateTest{
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
 
@@ -32,7 +32,7 @@ public class GreenRonanRateTest {
             throw e;
         }
     }
-
+    
     @Test
     public void test_2_ValidHourlyNormalRate() {
         CarParkKind kind = CarParkKind.MANAGEMENT;
@@ -568,6 +568,34 @@ public class GreenRonanRateTest {
             logger.info("Test 23 passed");
         } catch (AssertionError e) {
             logger.severe("Test 23 failed: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Test
+    public void test_24_InvalidWithNullValueForPeriodStay() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(7, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+
+        Period periodStay = null;
+
+        try {
+            assertThrows(NullPointerException.class, () -> {
+                rate.calculate(periodStay);
+            });
+            logger.info("Test 24 passed");
+        } catch (AssertionError e) {
+            logger.severe("Test 24 failed: " + e.getMessage());
             throw e;
         }
     }
