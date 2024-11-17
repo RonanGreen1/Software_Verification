@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d71d99b-8129-426d-bb12-3a9db9bb519b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GreenRonanPeriodTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GreenRonanRateTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GreenRonanTestTask1.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GreenRonanTestTask2/src/main/java/org/example/Period.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GreenRonanTestTask2/src/main/java/org/example/Rate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GreenRonanTestTask2/src/test/java/org/example/GreenRonanRateTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GreenRonanTestTask2/src/test/java/org/example/GreenRonanTestPeriod2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GreenRonanTestTask2/src/test/java/org/example/GreenRonanTestTask2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,72 +40,73 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.GreenRonanPeriodTest.executor": "Run",
-    "JUnit.GreenRonanPeriodTest.test_2_ValidLowerBoundaryForStartAndEndHours.executor": "Run",
-    "JUnit.GreenRonanPeriodTest.test_3_ValidUpperBoundaryForStartAndEndHours.executor": "Run",
-    "JUnit.GreenRonanPeriodTest.test_4_InvalidParkingHoursEndLowerThanStart.executor": "Run",
-    "JUnit.GreenRonanPeriodTest.validHoursForPeriod1.executor": "Run",
-    "JUnit.GreenRonanRateTest.executor": "Run",
-    "JUnit.GreenRonanRateTest.test_22_ValidPeriodStayStartInsideHourlyReducedRateAndEndInsideHourlyNormalRate.executor": "Run",
-    "JUnit.GreenRonanRateTest.test_24_NegativeTestWithNullValue.executor": "Run",
-    "JUnit.GreenRonanTestTask.InvalidPeriod20Argument.executor": "Run",
-    "JUnit.GreenRonanTestTask.executor": "Run",
-    "JUnit.GreenRonanTestTask.invalidHoursOutOfRange.executor": "Run",
-    "JUnit.GreenRonanTestTask.invalidNegativeEndTime.executor": "Run",
-    "JUnit.GreenRonanTestTask.invalidParkingHoursStartAndEndAreTheSame.executor": "Run",
-    "JUnit.GreenRonanTestTask.validFullOverlap.executor": "Run",
-    "JUnit.GreenRonanTestTask.validHoursForPeriod.executor": "Run",
-    "JUnit.GreenRonanTestTask.validHoursForPeriod1.executor": "Run",
-    "JUnit.GreenRonanTestTask.validLowerBoundaryForStartAndEndHours.executor": "Run",
-    "JUnit.GreenRonanTestTask.validMaximumBoundary.executor": "Run",
-    "JUnit.GreenRonanTestTask.validMinimumBoundary.executor": "Run",
-    "JUnit.GreenRonanTestTask.validNoOverlapWithBoundariesTouching.executor": "Run",
-    "JUnit.GreenRonanTestTask.validPeriodDuration.executor": "Run",
-    "JUnit.GreenRonanTestTask.validUpperBoundaryForStartAndEndHours.executor": "Run",
-    "JUnit.GreenRonanTestTask1.executor": "Run",
-    "JUnit.RateTest.invalidHourlyNormalRate.executor": "Run",
-    "JUnit.RateTest.invalidHourlyNormalRateLowerBoundary.executor": "Run",
-    "JUnit.RateTest.invalidHourlyNormalRateLowerThanHourlyReducedRate.executor": "Run",
-    "JUnit.RateTest.invalidHourlyNormalRateUpperBoundary.executor": "Run",
-    "JUnit.RateTest.invalidHourlyReducedRate.executor": "Run",
-    "JUnit.RateTest.invalidHourlyReducedRateLowerBoundary.executor": "Run",
-    "JUnit.RateTest.invalidHourlyReducedRateUpperBoundary.executor": "Run",
-    "JUnit.RateTest.testCalculateNormalPeriod.executor": "Run",
-    "JUnit.RateTest.testValidRateObject.executor": "Run",
-    "JUnit.RateTest.validHourlyNormalRate.executor": "Run",
-    "JUnit.RateTest.validHourlyNormalRateAndHourlyReducedRateBoth0.executor": "Run",
-    "JUnit.RateTest.validHourlyNormalRateAndHourlyReducedRateBoth10.executor": "Run",
-    "JUnit.RateTest.validHourlyNormalRateEqualToHourlyReducedRate.executor": "Run",
-    "JUnit.RateTest.validHourlyNormalRateLowerBoundaries.executor": "Run",
-    "JUnit.RateTest.validHourlyNormalRateUpperBoundaries.executor": "Run",
-    "JUnit.RateTest.validHourlyReducedRate.executor": "Run",
-    "JUnit.RateTest.validHourlyReducedRateLowerBoundaries.executor": "Run",
-    "JUnit.RateTest.validHourlyReducedRateUpperBoundaries.executor": "Run",
-    "JUnit.RateTest.validPeriodStayInsideHourlyReducedRate.executor": "Run",
-    "JUnit.RateTest.validPeriodStayStartInsideHourlyNormalRateAndEndInsideHourlyReducedRate.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.GreenRonanPeriodTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanPeriodTest.test_2_ValidLowerBoundaryForStartAndEndHours.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanPeriodTest.test_3_ValidUpperBoundaryForStartAndEndHours.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanPeriodTest.test_4_InvalidParkingHoursEndLowerThanStart.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanPeriodTest.validHoursForPeriod1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanRateTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanRateTest.test_22_ValidPeriodStayStartInsideHourlyReducedRateAndEndInsideHourlyNormalRate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanRateTest.test_24_NegativeTestWithNullValue.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.InvalidPeriod20Argument.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.invalidHoursOutOfRange.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.invalidNegativeEndTime.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.invalidParkingHoursStartAndEndAreTheSame.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validFullOverlap.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validHoursForPeriod.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validHoursForPeriod1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validLowerBoundaryForStartAndEndHours.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validMaximumBoundary.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validMinimumBoundary.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validNoOverlapWithBoundariesTouching.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validPeriodDuration.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask.validUpperBoundaryForStartAndEndHours.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GreenRonanTestTask1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.invalidHourlyNormalRate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.invalidHourlyNormalRateLowerBoundary.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.invalidHourlyNormalRateLowerThanHourlyReducedRate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.invalidHourlyNormalRateUpperBoundary.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.invalidHourlyReducedRate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.invalidHourlyReducedRateLowerBoundary.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.invalidHourlyReducedRateUpperBoundary.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.testCalculateNormalPeriod.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.testValidRateObject.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyNormalRate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyNormalRateAndHourlyReducedRateBoth0.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyNormalRateAndHourlyReducedRateBoth10.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyNormalRateEqualToHourlyReducedRate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyNormalRateLowerBoundaries.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyNormalRateUpperBoundaries.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyReducedRate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyReducedRateLowerBoundaries.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validHourlyReducedRateUpperBoundaries.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validPeriodStayInsideHourlyReducedRate.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RateTest.validPeriodStayStartInsideHourlyNormalRateAndEndInsideHourlyReducedRate.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Task-2&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ronan/Fourth_Year/Software Verification/Software_Verification/GreenRonanTestTask&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example" />
@@ -199,6 +196,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.GreenRonanPeriodTest" />
+      <item itemvalue="JUnit.GreenRonanRateTest" />
+      <item itemvalue="JUnit.GreenRonanRateTest.test_22_ValidPeriodStayStartInsideHourlyReducedRateAndEndInsideHourlyNormalRate" />
+      <item itemvalue="JUnit.GreenRonanRateTest.test_24_NegativeTestWithNullValue" />
+      <item itemvalue="JUnit.GreenRonanTestTask1" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.GreenRonanPeriodTest" />
@@ -231,6 +235,8 @@
       <workItem from="1729711116908" duration="6030000" />
       <workItem from="1729787345235" duration="3278000" />
       <workItem from="1729853320088" duration="3367000" />
+      <workItem from="1731865780973" duration="73000" />
+      <workItem from="1731865873170" duration="1156000" />
     </task>
     <servers />
   </component>

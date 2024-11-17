@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GreenRonanRateTest{
+public class GreenRonanRateTest2{
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
 

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import java.util.logging.Logger;
 
-class GreenRonanPeriodTest{
+class GreenRonanPeriodTest2{
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
 
