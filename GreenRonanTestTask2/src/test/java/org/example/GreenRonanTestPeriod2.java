@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 // 2. Assertion Updates:
 //    - Updated assertions accordingly to use the correct methods and maintain the original intent of each test.
 // Coverage:
-// 1. Staring Coverage 100% Methods, Lines 100%
+// 1. Staring Branch Coverage 88%
 
 class GreenRonanTestTaskPeriod2 {
 

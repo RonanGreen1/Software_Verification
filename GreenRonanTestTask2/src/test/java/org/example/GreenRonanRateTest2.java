@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 // 4. Test 13, 15 changed to valid
 // 5. Test 20-23 changed numerical values
 // Coverage:
-// 1. Staring Coverage 100% Methods, Lines 80%
+// 1. Staring Branch Coverage 55%
 public class GreenRonanRateTest2 {
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
