@@ -18,6 +18,14 @@ import static org.junit.jupiter.api.Assertions.*;
 // 5. Test 20-23 changed numerical values
 // Coverage:
 // 1. Staring Branch Coverage 55%
+// Coverage Findings:
+// 1. The branch coverage analysis for the Rate class revealed that 58% of the code was covered (21 out of 36 branches).
+// 2. Lines 16 (`throw new IllegalArgumentException("periods cannot be null");`) and 19 (`throw new IllegalArgumentException("The rates cannot be null");`) were not accessed.
+//    This indicates that no tests are verifying the scenario where null values are passed for periods or rates.
+// 3. Line 28 (`throw new IllegalArgumentException("The periods are not valid individually");`) and line 31 (`throw new IllegalArgumentException("The periods overlaps");`) were also not covered.
+//    This suggests missing tests for invalid periods, either individually or due to overlaps.
+// 4. Lines 65-69 were not covered (`if (list.size() >= 2) { ... }`).
+//    This indicates that scenarios involving multiple periods in the list and their validation are not being tested adequately, particularly edge cases involving more than two periods.
 public class GreenRonanRateTest2 {
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
