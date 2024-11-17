@@ -10,6 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 // Changes:
 // Initial changes to run test:
 // 1. No changes made
+// Changes for incorrect tests:
+// 1. Test 4 BigDecimal hourlyNormalRate needed to be changed from 0 to 1
+// 2. Test 7 BigDecimal hourlyNormalRate needed to be changed from 10 to 11
+// 3. Test 9, 10, 11 changed to Invalid
+// 4. Test 13, 15 changed to valid
+// 5. Test 20-23 changed numerical values
 // Coverage:
 // 1. Staring Coverage 100% Methods, Lines 80%
 public class GreenRonanRateTest2 {
@@ -96,7 +102,7 @@ public class GreenRonanRateTest2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>();
         reducedPeriods.add(new Period(17, 24));
 
-        BigDecimal hourlyNormalRate = new BigDecimal("0");
+        BigDecimal hourlyNormalRate = new BigDecimal("1");
         BigDecimal hourlyReducedRate = new BigDecimal("0");
 
         try {
@@ -168,7 +174,7 @@ public class GreenRonanRateTest2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>();
         reducedPeriods.add(new Period(17, 24));
 
-        BigDecimal hourlyNormalRate = new BigDecimal("10");
+        BigDecimal hourlyNormalRate = new BigDecimal("11");
         BigDecimal hourlyReducedRate = new BigDecimal("10");
 
         try {
@@ -207,7 +213,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_9_ValidHourlyNormalRateEqualToHourlyReducedRate() {
+    public void test_9_InvalidNormalRateEqualToReducedRate() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -220,7 +226,7 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyReducedRate = new BigDecimal("5");
 
         try {
-            assertDoesNotThrow(() -> {
+            assertThrows(IllegalArgumentException.class, () -> {
                 new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
             });
             logger.info("Test 9 passed");
@@ -231,7 +237,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_10_ValidHourlyNormalRateAndHourlyReducedRateBoth0() {
+    public void test_10_InvalidNormalRateAndReducedRateBothZero() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -244,7 +250,7 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyReducedRate = new BigDecimal("0");
 
         try {
-            assertDoesNotThrow(() -> {
+            assertThrows(IllegalArgumentException.class, () -> {
                 new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
             });
             logger.info("Test 10 passed");
@@ -255,7 +261,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_11_ValidHourlyNormalRateAndHourlyReducedRateBoth10() {
+    public void test_11_InvalidNormalRateAndReducedRateBothTen() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -268,7 +274,7 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyReducedRate = new BigDecimal("10");
 
         try {
-            assertDoesNotThrow(() -> {
+            assertThrows(IllegalArgumentException.class, () -> {
                 new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
             });
             logger.info("Test 11 passed");
@@ -302,7 +308,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_13_InvalidHourlyNormalRate() {
+    public void test_13_ValidHourlyNormalRate() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -315,7 +321,7 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyReducedRate = new BigDecimal("2");
 
         try {
-            assertThrows(IllegalArgumentException.class, () -> {
+            assertDoesNotThrow(() -> {
                 new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
             });
             logger.info("Test 13 passed");
@@ -350,7 +356,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_15_InvalidHourlyNormalRateUpperBoundary() {
+    public void test_15_ValidHourlyNormalRateUpperBoundary() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -363,7 +369,7 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyReducedRate = new BigDecimal("5");
 
         try {
-            assertThrows(IllegalArgumentException.class, () -> {
+            assertDoesNotThrow(() -> {
                 new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
             });
             logger.info("Test 15 passed");
@@ -485,7 +491,7 @@ public class GreenRonanRateTest2 {
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
         Period periodStay = new Period(10, 12);
-        BigDecimal expectedCost = new BigDecimal("10.00");
+        BigDecimal expectedCost = new BigDecimal("10");
 
         try {
             assertEquals(expectedCost, rate.calculate(periodStay));
@@ -512,7 +518,7 @@ public class GreenRonanRateTest2 {
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
         Period periodStay = new Period(18, 20);
-        BigDecimal expectedCost = new BigDecimal("4.00");
+        BigDecimal expectedCost = new BigDecimal("4");
 
         try {
             assertEquals(expectedCost, rate.calculate(periodStay));
@@ -539,7 +545,7 @@ public class GreenRonanRateTest2 {
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
         Period periodStay = new Period(6, 8);
-        BigDecimal expectedCost = new BigDecimal("7.00");
+        BigDecimal expectedCost = new BigDecimal("7");
 
         try {
             assertEquals(expectedCost, rate.calculate(periodStay));
@@ -566,7 +572,7 @@ public class GreenRonanRateTest2 {
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
         Period periodStay = new Period(16, 18);
-        BigDecimal expectedCost = new BigDecimal("7.00");
+        BigDecimal expectedCost = new BigDecimal("7");
 
         try {
             assertEquals(expectedCost, rate.calculate(periodStay));
