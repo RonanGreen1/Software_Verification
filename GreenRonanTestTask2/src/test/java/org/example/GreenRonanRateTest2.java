@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GreenRonanRateTest2{
+// Changes:
+// Initial changes to run test:
+// 1. No changes made
+// Coverage:
+// 1. Staring Coverage 100% Methods, Lines 80%
+public class GreenRonanRateTest2 {
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
 

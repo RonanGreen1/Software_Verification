@@ -7,7 +7,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import java.util.logging.Logger;
 
-class GreenRonanPeriodTest2{
+// Changes Made:
+// Initial changes to run test:
+// 1. Method Name Adjustments:
+//    - Updated method names from getDuration() to duration() and overlapsWith() to overlaps() to match the current Period class.
+// 2. Assertion Updates:
+//    - Updated assertions accordingly to use the correct methods and maintain the original intent of each test.
+// Coverage:
+// 1. Staring Coverage 100% Methods, Lines 100%
+
+class GreenRonanTestTaskPeriod2 {
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
 
@@ -16,8 +25,8 @@ class GreenRonanPeriodTest2{
         Period period1 = new Period(8, 10);
         Period period2 = new Period(17, 24);
         try {
-            assertEquals(2, period1.getDuration());
-            assertFalse(period1.overlapsWith(period2));
+            assertEquals(2, period1.duration());
+            assertFalse(period1.overlaps(period2));
             logger.info("Test 1 passed");
         } catch (AssertionError e) {
             logger.severe("Test 1 failed: " + e.getMessage());
@@ -30,8 +39,8 @@ class GreenRonanPeriodTest2{
         Period period1 = new Period(0, 1);
         Period period2 = new Period(17, 24);
         try {
-            assertEquals(1, period1.getDuration());
-            assertFalse(period1.overlapsWith(period2));
+            assertEquals(1, period1.duration());
+            assertFalse(period1.overlaps(period2));
             logger.info("Test 2 passed");
         } catch (AssertionError e) {
             logger.severe("Test 2 failed: " + e.getMessage());
@@ -44,8 +53,8 @@ class GreenRonanPeriodTest2{
         Period period1 = new Period(23, 24);
         Period period2 = new Period(17, 24);
         try {
-            assertEquals(1, period1.getDuration());
-            assertTrue(period1.overlapsWith(period2));
+            assertEquals(1, period1.duration());
+            assertTrue(period1.overlaps(period2));
             logger.info("Test 3 passed");
         } catch (AssertionError e) {
             logger.severe("Test 3 failed: " + e.getMessage());
@@ -122,7 +131,7 @@ class GreenRonanPeriodTest2{
     void test_9_ValidPeriodDuration() {
         Period period1 = new Period(2, 10);
         try {
-            assertEquals(8, period1.getDuration());
+            assertEquals(8, period1.duration());
             logger.info("Test 9 passed");
         } catch (AssertionError e) {
             logger.severe("Test 9 failed: " + e.getMessage());
@@ -134,7 +143,7 @@ class GreenRonanPeriodTest2{
     void test_10_ValidMinimumBoundary() {
         Period period1 = new Period(0, 1);
         try {
-            assertEquals(1, period1.getDuration());
+            assertEquals(1, period1.duration());
             logger.info("Test 10 passed");
         } catch (AssertionError e) {
             logger.severe("Test 10 failed: " + e.getMessage());
@@ -146,7 +155,7 @@ class GreenRonanPeriodTest2{
     void test_11_ValidMaximumBoundary() {
         Period period1 = new Period(0, 24);
         try {
-            assertEquals(24, period1.getDuration());
+            assertEquals(24, period1.duration());
             logger.info("Test 11 passed");
         } catch (AssertionError e) {
             logger.severe("Test 11 failed: " + e.getMessage());
@@ -159,8 +168,8 @@ class GreenRonanPeriodTest2{
         Period period1 = new Period(8, 11);
         Period period2 = new Period(17, 24);
         try {
-            assertEquals(3, period1.getDuration());
-            assertFalse(period1.overlapsWith(period2));
+            assertEquals(3, period1.duration());
+            assertFalse(period1.overlaps(period2));
             logger.info("Test 12 passed");
         } catch (AssertionError e) {
             logger.severe("Test 12 failed: " + e.getMessage());
@@ -173,8 +182,8 @@ class GreenRonanPeriodTest2{
         Period period1 = new Period(3, 18);
         Period period2 = new Period(17, 24);
         try {
-            assertEquals(15, period1.getDuration());
-            assertTrue(period1.overlapsWith(period2));
+            assertEquals(15, period1.duration());
+            assertTrue(period1.overlaps(period2));
             logger.info("Test 13 passed");
         } catch (AssertionError e) {
             logger.severe("Test 13 failed: " + e.getMessage());
@@ -187,8 +196,8 @@ class GreenRonanPeriodTest2{
         Period period1 = new Period(5, 10);
         Period period2 = new Period(10, 15);
         try {
-            assertEquals(5, period1.getDuration());
-            assertFalse(period1.overlapsWith(period2));
+            assertEquals(5, period1.duration());
+            assertFalse(period1.overlaps(period2));
             logger.info("Test 14 passed");
         } catch (AssertionError e) {
             logger.severe("Test 14 failed: " + e.getMessage());
@@ -201,8 +210,8 @@ class GreenRonanPeriodTest2{
         Period period1 = new Period(4, 15);
         Period period2 = new Period(6, 10);
         try {
-            assertEquals(11, period1.getDuration());
-            assertTrue(period1.overlapsWith(period2));
+            assertEquals(11, period1.duration());
+            assertTrue(period1.overlaps(period2));
             logger.info("Test 15 passed");
         } catch (AssertionError e) {
             logger.severe("Test 15 failed: " + e.getMessage());
