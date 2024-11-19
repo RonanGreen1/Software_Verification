@@ -7,28 +7,6 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
-// Changes:
-// Initial changes to run test:
-// 1. No changes made
-// Changes for incorrect tests:
-// 1. Test 4 BigDecimal hourlyNormalRate needed to be changed from 0 to 1
-// 2. Test 7 BigDecimal hourlyNormalRate needed to be changed from 10 to 11
-// 3. Test 9, 10, 11 changed to Invalid
-// 4. Test 13, 15 changed to valid
-// 5. Test 20-23 changed numerical values
-// Coverage:
-// 1. Staring Branch Coverage 55%
-// Coverage Findings:
-// 1. The branch coverage analysis for the Rate class revealed that 58% of the code was covered (21 out of 36 branches).
-// 2. Lines 16 (`throw new IllegalArgumentException("periods cannot be null");`) and 19 (`throw new IllegalArgumentException("The rates cannot be null");`) were not accessed.
-//    This indicates that no tests are verifying the scenario where null values are passed for periods or rates.
-// 3. Line 28 (`throw new IllegalArgumentException("The periods are not valid individually");`) and line 31 (`throw new IllegalArgumentException("The periods overlaps");`) were also not covered.
-//    This suggests missing tests for invalid periods, either individually or due to overlaps.
-// 4. Lines 65-69 were not covered (`if (list.size() >= 2) { ... }`).
-//    This indicates that scenarios involving multiple periods in the list and their validation are not being tested adequately, particularly edge cases involving more than two periods.
-// Increasing Coverage:
-// 1.  Increased branch coverage up tp 94% by covering the lines that weren't covered in the original tests I made with tests 25-33
-// 2. Increased branch coverage up to 100% by exploring the alternatives to while (i < lastIndex && isValid) and if (this.kind == CarParkKind.VISITOR)
 public class GreenRonanRateTest2 {
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
