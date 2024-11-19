@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8d71d99b-8129-426d-bb12-3a9db9bb519b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GreenRonanTestTask2/src/test/java/org/example/GreenRonanTestPeriod2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GreenRonanTestTask2/src/test/java/org/example/GreenRonanTestPeriod2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +231,7 @@
       <workItem from="1729787345235" duration="3278000" />
       <workItem from="1729853320088" duration="3367000" />
       <workItem from="1731865780973" duration="73000" />
-      <workItem from="1731865873170" duration="1156000" />
+      <workItem from="1731865873170" duration="2632000" />
     </task>
     <servers />
   </component>

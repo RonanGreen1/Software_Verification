@@ -95,5 +95,7 @@ public class Rate {
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
     }
 
+
+
 }
 

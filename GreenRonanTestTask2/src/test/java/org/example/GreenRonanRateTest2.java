@@ -26,6 +26,9 @@ import static org.junit.jupiter.api.Assertions.*;
 //    This suggests missing tests for invalid periods, either individually or due to overlaps.
 // 4. Lines 65-69 were not covered (`if (list.size() >= 2) { ... }`).
 //    This indicates that scenarios involving multiple periods in the list and their validation are not being tested adequately, particularly edge cases involving more than two periods.
+// Increasing Coverage:
+// 1.  Increased branch coverage up tp 94% by covering the lines that weren't covered in the original tests I made with tests 25-33
+// 2. Increased branch coverage up to 100% by exploring the alternatives to while (i < lastIndex && isValid) and if (this.kind == CarParkKind.VISITOR)
 public class GreenRonanRateTest2 {
 
     private static final Logger logger = Logger.getLogger("PeriodLogger");
@@ -43,13 +46,9 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("2");
 
-        try {
+        assertDoesNotThrow(() -> {
             new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            logger.info("Test 1 passed");
-        } catch (IllegalArgumentException e) {
-            logger.severe("Test 1 failed: " + e.getMessage());
-            throw e;
-        }
+        });
     }
 
     @Test
@@ -65,15 +64,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("2");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 2 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 2 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -89,15 +84,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("7");
         BigDecimal hourlyReducedRate = new BigDecimal("3");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 3 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 3 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -113,15 +104,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("1");
         BigDecimal hourlyReducedRate = new BigDecimal("0");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 4 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 4 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -137,15 +124,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("10");
         BigDecimal hourlyReducedRate = new BigDecimal("5");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 5 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 5 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -161,15 +144,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("0");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 6 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 6 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -185,15 +164,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("11");
         BigDecimal hourlyReducedRate = new BigDecimal("10");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 7 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 7 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -209,15 +184,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("6");
         BigDecimal hourlyReducedRate = new BigDecimal("3");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 8 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 8 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -233,15 +204,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("5");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 9 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 9 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -257,15 +224,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("0");
         BigDecimal hourlyReducedRate = new BigDecimal("0");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 10 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 10 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -281,15 +244,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("10");
         BigDecimal hourlyReducedRate = new BigDecimal("10");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 11 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 11 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -304,15 +263,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("2");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(CarParkKind.valueOf(kind), reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 12 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 12 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.valueOf(kind), reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -328,15 +283,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("15");
         BigDecimal hourlyReducedRate = new BigDecimal("2");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 13 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 13 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -352,15 +303,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("15");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 14 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 14 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -376,15 +323,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("11");
         BigDecimal hourlyReducedRate = new BigDecimal("5");
 
-        try {
-            assertDoesNotThrow(() -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 15 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 15 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertDoesNotThrow(() -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -400,15 +343,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("-1");
         BigDecimal hourlyReducedRate = new BigDecimal("5");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 16 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 16 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -424,15 +363,10 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("11");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 17 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 17 failed: " + e.getMessage());
-            throw e;
-        }
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -448,15 +382,10 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("-1");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 18 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 18 failed: " + e.getMessage());
-            throw e;
-        }
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -472,15 +401,11 @@ public class GreenRonanRateTest2 {
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("8");
 
-        try {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-            });
-            logger.info("Test 19 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 19 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
     }
 
     @Test
@@ -501,13 +426,9 @@ public class GreenRonanRateTest2 {
         Period periodStay = new Period(10, 12);
         BigDecimal expectedCost = new BigDecimal("10");
 
-        try {
-            assertEquals(expectedCost, rate.calculate(periodStay));
-            logger.info("Test 20 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 20 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertEquals(expectedCost, rate.calculate(periodStay));
+
     }
 
     @Test
@@ -528,13 +449,8 @@ public class GreenRonanRateTest2 {
         Period periodStay = new Period(18, 20);
         BigDecimal expectedCost = new BigDecimal("4");
 
-        try {
-            assertEquals(expectedCost, rate.calculate(periodStay));
-            logger.info("Test 21 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 21 failed: " + e.getMessage());
-            throw e;
-        }
+        assertEquals(expectedCost, rate.calculate(periodStay));
+
     }
 
     @Test
@@ -555,13 +471,9 @@ public class GreenRonanRateTest2 {
         Period periodStay = new Period(6, 8);
         BigDecimal expectedCost = new BigDecimal("7");
 
-        try {
-            assertEquals(expectedCost, rate.calculate(periodStay));
-            logger.info("Test 22 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 22 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertEquals(expectedCost, rate.calculate(periodStay));
+
     }
 
     @Test
@@ -582,13 +494,9 @@ public class GreenRonanRateTest2 {
         Period periodStay = new Period(16, 18);
         BigDecimal expectedCost = new BigDecimal("7");
 
-        try {
-            assertEquals(expectedCost, rate.calculate(periodStay));
-            logger.info("Test 23 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 23 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertEquals(expectedCost, rate.calculate(periodStay));
+
     }
 
     @Test
@@ -608,14 +516,228 @@ public class GreenRonanRateTest2 {
 
         Period periodStay = null;
 
-        try {
-            assertThrows(NullPointerException.class, () -> {
-                rate.calculate(periodStay);
-            });
-            logger.info("Test 24 passed");
-        } catch (AssertionError e) {
-            logger.severe("Test 24 failed: " + e.getMessage());
-            throw e;
-        }
+
+        assertThrows(NullPointerException.class, () -> {
+            rate.calculate(periodStay);
+        });
+
+    }
+
+    @Test
+    void test_25_InvalidNormalPeriodNull() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = null;
+
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_26_InvalidReducedPeriodNull() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(17, 24));
+
+        ArrayList<Period> reducedPeriods = null;
+
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_27_InvalidHourlyNormalRateNull() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(17, 24));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+
+        BigDecimal hourlyNormalRate = null;
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_28_InvalidHourlyReducedRateNull() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(17, 24));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+
+        BigDecimal hourlyNormalRate = new BigDecimal("2");
+        BigDecimal hourlyReducedRate = null;
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_29_InvalidReducedPeriods() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(10, 11));
+        reducedPeriods.add(new Period(8, 9));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("2");
+        BigDecimal hourlyReducedRate = new BigDecimal("1");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_30_InvalidNormalPeriods() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 11));
+        normalPeriods.add(new Period(8, 9));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(9, 10));
+
+
+        BigDecimal hourlyNormalRate = new BigDecimal("2");
+        BigDecimal hourlyReducedRate = new BigDecimal("1");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_31_InvalidReducedAndNormalPeriodsOverlap() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 11));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(9, 10));
+
+
+        BigDecimal hourlyNormalRate = new BigDecimal("2");
+        BigDecimal hourlyReducedRate = new BigDecimal("1");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_32_InvalidNormalPeriodsIndividualValidity() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 10));
+        normalPeriods.add(new Period(9, 10));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
+        assertEquals("The periods are not valid individually", exception.getMessage());
+    }
+
+    @Test
+    void test_33_InvalidReducedPeriodsIndividualValidity() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 10));
+
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
+        assertEquals("The periods are not valid individually", exception.getMessage());
+    }
+
+    @Test
+    void test_34_InvalidPeriodsIsValidFalseInLoop() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 10));
+        normalPeriods.add(new Period(10, 11));
+        normalPeriods.add(new Period(9, 10));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 20));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
+        assertEquals("The periods are not valid individually", exception.getMessage());
+    }
+
+    @Test
+    void test_35_ValidVisitorKindCalculation() {
+        CarParkKind kind = CarParkKind.VISITOR;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17)); // Valid normal periods
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24)); // Valid reduced periods
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+
+        Period periodStay = new Period(10, 12); // Staying during normal rate period
+        BigDecimal expectedCost = BigDecimal.ZERO; // Visitor kind calculation should always return 0
+
+        assertEquals(expectedCost, rate.calculate(periodStay));
     }
 }
