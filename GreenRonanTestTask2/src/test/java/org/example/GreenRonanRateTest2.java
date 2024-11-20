@@ -4,12 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GreenRonanRateTest2 {
-
-    private static final Logger logger = Logger.getLogger("PeriodLogger");
 
     @Test
     void test_1_ValidKind() {
@@ -248,68 +245,9 @@ public class GreenRonanRateTest2 {
 
     }
 
-    @Test
-    public void test_13_ValidHourlyNormalRate() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(7, 17));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("15");
-        BigDecimal hourlyReducedRate = new BigDecimal("2");
-
-
-        assertDoesNotThrow(() -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-
-    }
 
     @Test
-    public void test_14_InvalidHourlyReducedRate() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(7, 17));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("5");
-        BigDecimal hourlyReducedRate = new BigDecimal("15");
-
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-
-    }
-
-    @Test
-    public void test_15_ValidHourlyNormalRateUpperBoundary() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(7, 17));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("11");
-        BigDecimal hourlyReducedRate = new BigDecimal("5");
-
-
-        assertDoesNotThrow(() -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-
-    }
-
-    @Test
-    public void test_16_InvalidHourlyNormalRateLowerBoundary() {
+    public void test_13_InvalidHourlyNormalRateLowerBoundary() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -329,26 +267,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_17_InvalidHourlyReducedRateUpperBoundary() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(7, 17));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("5");
-        BigDecimal hourlyReducedRate = new BigDecimal("11");
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-
-    }
-
-    @Test
-    public void test_18_InvalidHourlyReducedRateLowerBoundary() {
+    public void test_14_InvalidHourlyReducedRateLowerBoundary() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -367,7 +286,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_19_InvalidHourlyNormalRateLowerThanHourlyReducedRate() {
+    public void test_15_InvalidHourlyNormalRateLowerThanHourlyReducedRate() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -387,7 +306,204 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_20_ValidPeriodStayInsideHourlyNormalRate() {
+    void test_16_InvalidNormalPeriodNull() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = null;
+
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_17_InvalidReducedPeriodNull() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(17, 24));
+
+        ArrayList<Period> reducedPeriods = null;
+
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_18_InvalidHourlyNormalRateNull() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(17, 24));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+
+        BigDecimal hourlyNormalRate = null;
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_19_InvalidHourlyReducedRateNull() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(17, 24));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+
+        BigDecimal hourlyNormalRate = new BigDecimal("2");
+        BigDecimal hourlyReducedRate = null;
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_20_InvalidReducedPeriods() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(10, 11));
+        reducedPeriods.add(new Period(8, 9));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("2");
+        BigDecimal hourlyReducedRate = new BigDecimal("1");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_21_InvalidNormalPeriods() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 11));
+        normalPeriods.add(new Period(8, 9));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(9, 10));
+
+
+        BigDecimal hourlyNormalRate = new BigDecimal("2");
+        BigDecimal hourlyReducedRate = new BigDecimal("1");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_22_InvalidReducedAndNormalPeriodsOverlap() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 11));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(9, 10));
+
+
+        BigDecimal hourlyNormalRate = new BigDecimal("2");
+        BigDecimal hourlyReducedRate = new BigDecimal("1");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_23_InvalidNormalPeriodsIndividualValidity() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 10));
+        normalPeriods.add(new Period(9, 10));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
+        assertEquals("The periods are not valid individually", exception.getMessage());
+    }
+
+    @Test
+    void test_24_InvalidReducedPeriodsIndividualValidity() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 10));
+
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
+        assertEquals("The periods are not valid individually", exception.getMessage());
+    }
+
+    @Test
+    void test_25_InvalidPeriodsIsValidFalseInLoop() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 10));
+        normalPeriods.add(new Period(10, 11));
+        normalPeriods.add(new Period(9, 10));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 20));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+
+        assertEquals("The periods are not valid individually", exception.getMessage());
+    }
+
+    @Test
+    public void test_26_ValidPeriodStayInsideHourlyNormalRate() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -410,7 +526,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_21_ValidPeriodStayInsideHourlyReducedRate() {
+    public void test_27_ValidPeriodStayInsideHourlyReducedRate() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -432,7 +548,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_22_ValidPeriodStayStartInsideHourlyReducedRateAndEndInsideHourlyNormalRate() {
+    public void test_28_ValidPeriodStayStartInsideHourlyReducedRateAndEndInsideHourlyNormalRate() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -455,7 +571,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_23_ValidPeriodStayStartInsideHourlyNormalRateAndEndInsideHourlyReducedRate() {
+    public void test_29_ValidPeriodStayStartInsideHourlyNormalRateAndEndInsideHourlyReducedRate() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -478,7 +594,7 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    public void test_24_InvalidWithNullValueForPeriodStay() {
+    public void test_30_InvalidWithNullValueForPeriodStay() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -502,219 +618,22 @@ public class GreenRonanRateTest2 {
     }
 
     @Test
-    void test_25_InvalidNormalPeriodNull() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = null;
-
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("5");
-        BigDecimal hourlyReducedRate = new BigDecimal("2");
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-    }
-
-    @Test
-    void test_26_InvalidReducedPeriodNull() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(17, 24));
-
-        ArrayList<Period> reducedPeriods = null;
-
-
-        BigDecimal hourlyNormalRate = new BigDecimal("5");
-        BigDecimal hourlyReducedRate = new BigDecimal("2");
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-    }
-
-    @Test
-    void test_27_InvalidHourlyNormalRateNull() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(17, 24));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24));
-
-
-        BigDecimal hourlyNormalRate = null;
-        BigDecimal hourlyReducedRate = new BigDecimal("2");
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-    }
-
-    @Test
-    void test_28_InvalidHourlyReducedRateNull() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(17, 24));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24));
-
-
-        BigDecimal hourlyNormalRate = new BigDecimal("2");
-        BigDecimal hourlyReducedRate = null;
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-    }
-
-    @Test
-    void test_29_InvalidReducedPeriods() {
-        CarParkKind kind = CarParkKind.STAFF;
+    void test_31_ValidVisitorKindCalculation() {
+        CarParkKind kind = CarParkKind.VISITOR;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
         normalPeriods.add(new Period(9, 17));
 
         ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(10, 11));
-        reducedPeriods.add(new Period(8, 9));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("2");
-        BigDecimal hourlyReducedRate = new BigDecimal("1");
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-    }
-
-    @Test
-    void test_30_InvalidNormalPeriods() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(9, 11));
-        normalPeriods.add(new Period(8, 9));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(9, 10));
-
-
-        BigDecimal hourlyNormalRate = new BigDecimal("2");
-        BigDecimal hourlyReducedRate = new BigDecimal("1");
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-    }
-
-    @Test
-    void test_31_InvalidReducedAndNormalPeriodsOverlap() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(9, 11));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(9, 10));
-
-
-        BigDecimal hourlyNormalRate = new BigDecimal("2");
-        BigDecimal hourlyReducedRate = new BigDecimal("1");
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-    }
-
-    @Test
-    void test_32_InvalidNormalPeriodsIndividualValidity() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(9, 10));
-        normalPeriods.add(new Period(9, 10));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
         reducedPeriods.add(new Period(17, 24));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("5");
-        BigDecimal hourlyReducedRate = new BigDecimal("2");
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-
-        assertEquals("The periods are not valid individually", exception.getMessage());
-    }
-
-    @Test
-    void test_33_InvalidReducedPeriodsIndividualValidity() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(9, 10));
-
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24));
-        reducedPeriods.add(new Period(17, 24));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("5");
-        BigDecimal hourlyReducedRate = new BigDecimal("2");
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-
-        assertEquals("The periods are not valid individually", exception.getMessage());
-    }
-
-    @Test
-    void test_34_InvalidPeriodsIsValidFalseInLoop() {
-        CarParkKind kind = CarParkKind.STAFF;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(9, 10));
-        normalPeriods.add(new Period(10, 11));
-        normalPeriods.add(new Period(9, 10));
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 20));
-
-        BigDecimal hourlyNormalRate = new BigDecimal("5");
-        BigDecimal hourlyReducedRate = new BigDecimal("2");
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
-        });
-
-        assertEquals("The periods are not valid individually", exception.getMessage());
-    }
-
-    @Test
-    void test_35_ValidVisitorKindCalculation() {
-        CarParkKind kind = CarParkKind.VISITOR;
-
-        ArrayList<Period> normalPeriods = new ArrayList<>();
-        normalPeriods.add(new Period(9, 17)); // Valid normal periods
-
-        ArrayList<Period> reducedPeriods = new ArrayList<>();
-        reducedPeriods.add(new Period(17, 24)); // Valid reduced periods
 
         BigDecimal hourlyNormalRate = new BigDecimal("5");
         BigDecimal hourlyReducedRate = new BigDecimal("2");
 
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
-        Period periodStay = new Period(10, 12); // Staying during normal rate period
-        BigDecimal expectedCost = BigDecimal.ZERO; // Visitor kind calculation should always return 0
+        Period periodStay = new Period(10, 12);
+        BigDecimal expectedCost = BigDecimal.ZERO;
 
         assertEquals(expectedCost, rate.calculate(periodStay));
     }

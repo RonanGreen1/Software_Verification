@@ -8,11 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
 
 class GreenRonanTestTaskPeriod2 {
-
-    private static final Logger logger = Logger.getLogger("PeriodLogger");
 
     @Test
     void test_1_ValidHoursForPeriod1() {
@@ -92,7 +90,14 @@ class GreenRonanTestTaskPeriod2 {
     }
 
     @Test
-    void test_9_ValidPeriodDuration() {
+    void test_9_InvalidEndTimeAboveTwentyFour() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Period(5, 25); // End is greater than 24
+        });
+    }
+
+    @Test
+    void test_10_ValidPeriodDuration() {
         Period period1 = new Period(2, 10);
 
         assertEquals(8, period1.duration());
@@ -101,7 +106,7 @@ class GreenRonanTestTaskPeriod2 {
     }
 
     @Test
-    void test_10_ValidMinimumBoundary() {
+    void test_12_ValidMinimumBoundary() {
         Period period1 = new Period(0, 1);
 
         assertEquals(1, period1.duration());
@@ -109,7 +114,7 @@ class GreenRonanTestTaskPeriod2 {
     }
 
     @Test
-    void test_11_ValidMaximumBoundary() {
+    void test_12_ValidMaximumBoundary() {
         Period period1 = new Period(0, 24);
 
         assertEquals(24, period1.duration());
@@ -118,7 +123,7 @@ class GreenRonanTestTaskPeriod2 {
     }
 
     @Test
-    void test_12_ValidNoOverlap() {
+    void test_13_ValidNoOverlap() {
         Period period1 = new Period(8, 11);
         Period period2 = new Period(17, 24);
 
@@ -128,7 +133,7 @@ class GreenRonanTestTaskPeriod2 {
     }
 
     @Test
-    void test_13_ValidOverlap() {
+    void test_14_ValidOverlap() {
         Period period1 = new Period(3, 18);
         Period period2 = new Period(17, 24);
 
@@ -138,7 +143,7 @@ class GreenRonanTestTaskPeriod2 {
     }
 
     @Test
-    void test_14_ValidNoOverlapWithBoundariesTouching() {
+    void test_15_ValidNoOverlapWithBoundariesTouching() {
         Period period1 = new Period(5, 10);
         Period period2 = new Period(10, 15);
 
@@ -148,7 +153,7 @@ class GreenRonanTestTaskPeriod2 {
     }
 
     @Test
-    void test_15_ValidFullOverlap() {
+    void test_16_ValidFullOverlap() {
         Period period1 = new Period(4, 15);
         Period period2 = new Period(6, 10);
 
@@ -158,21 +163,7 @@ class GreenRonanTestTaskPeriod2 {
     }
 
     @Test
-    void test_16_InvalidEndTimeBelowZero() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Period(5, -1); // End is less than 0
-        });
-    }
-
-    @Test
-    void test_17_InvalidEndTimeAboveTwentyFour() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Period(5, 25); // End is greater than 24
-        });
-    }
-
-    @Test
-    void test_18_IsInBecomesFalseInLoop() {
+    void test_17_ValidIsInBecomesFalseInLoop() {
         Period period1 = new Period(5, 10); // The main period being checked
         List<Period> periodList = new ArrayList<>();
         periodList.add(new Period(3, 6));  // Does not match
