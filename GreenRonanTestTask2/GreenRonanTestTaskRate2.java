@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GreenRonanRateTest2 {
+public class GreenRonanTestTaskRate2 {
 
     @Test
     void test_1_ValidKind() {
