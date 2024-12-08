@@ -90,9 +90,51 @@ public class Rate {
     public BigDecimal calculate(Period periodStay) {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        if (this.kind==CarParkKind.VISITOR) return BigDecimal.valueOf(0);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
-                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+
+        // Calculate the total cost
+        BigDecimal totalCost = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))
+                .add(this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+
+        // Apply reductions based on CarParkKind
+        return applyReduction(totalCost, this.kind);
+    }
+
+    // Helper method to apply reductions based on CarParkKind
+    private BigDecimal applyReduction(BigDecimal totalCost, CarParkKind kind) {
+        switch (kind) {
+            case VISITOR -> {
+                if (totalCost.compareTo(BigDecimal.TEN) <= 0) {
+                    return BigDecimal.ZERO;
+                }
+                return (totalCost.subtract(BigDecimal.TEN)).multiply(BigDecimal.valueOf(0.5));
+            }
+
+            case MANAGEMENT -> {
+                if (totalCost.compareTo(BigDecimal.valueOf(4.00)) < 0) {
+                    return BigDecimal.valueOf(4.00);
+                } else {
+                    return totalCost;
+                }
+            }
+
+            case STUDENT -> {
+                if (totalCost.compareTo(BigDecimal.valueOf(5.50)) <= 0) {
+                    return totalCost;
+                }
+                BigDecimal aboveThreshold = totalCost.subtract(BigDecimal.valueOf(5.50));
+                return aboveThreshold.multiply(BigDecimal.valueOf(0.75)).add(BigDecimal.valueOf(5.50));
+            }
+
+            case STAFF -> {
+                if (totalCost.compareTo(BigDecimal.valueOf(16.00)) > 0) {
+                    return BigDecimal.valueOf(16.00);
+                } else {
+                    return totalCost;
+                }
+            }
+
+            default -> throw new IllegalArgumentException("Unknown CarParkKind");
+        }
     }
 
 }

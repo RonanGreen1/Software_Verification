@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -618,7 +619,7 @@ public class GreenRonanTestTaskRate3 {
     }
 
     @Test
-    void test_31_ValidVisitorKindCalculation() {
+    void testVisitorKindCalculation() {
         CarParkKind kind = CarParkKind.VISITOR;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -632,9 +633,79 @@ public class GreenRonanTestTaskRate3 {
 
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
-        Period periodStay = new Period(10, 12);
-        BigDecimal expectedCost = BigDecimal.ZERO;
+        // Total cost = 15.00 (10.00 free, 50% of 5.00 = 2.50)
+        Period periodStay = new Period(10, 13); // 3 normal hours = 15.00
+        BigDecimal expectedCost = new BigDecimal("2.5");
 
         assertEquals(expectedCost, rate.calculate(periodStay));
     }
+
+    @Test
+    void testManagementKindCalculation() {
+        CarParkKind kind = CarParkKind.MANAGEMENT;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("3");
+        BigDecimal hourlyReducedRate = new BigDecimal("1");
+
+        Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+
+        // Total cost = 3.00 (below minimum, so it should be 4.00)
+        Period periodStay = new Period(10, 11); // 1 normal hour = 3.00
+        BigDecimal expectedCost = new BigDecimal("4.0");
+
+        assertEquals(expectedCost, rate.calculate(periodStay));
+    }
+
+    @Test
+    void testStudentKindCalculation() {
+        CarParkKind kind = CarParkKind.STUDENT;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+
+        // Total cost = 15.00 (5.50 full, 25% reduction on 9.50 = 7.13 + 5.50 = 12.63)
+        Period periodStay = new Period(10, 13); // 3 normal hours = 15.00
+        BigDecimal expectedCost = new BigDecimal("12.63");
+
+        assertEquals(expectedCost.setScale(2, RoundingMode.HALF_UP), rate.calculate(periodStay).setScale(2, RoundingMode.HALF_UP)); // Used to round up 1 decimal place
+    }
+
+    @Test
+    void testStaffKindCalculation() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("5");
+        BigDecimal hourlyReducedRate = new BigDecimal("2");
+
+        Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+
+        // Total cost = 20.00 (but capped at 16.00)
+        Period periodStay = new Period(10, 14); // 4 normal hours = 20.00
+        BigDecimal expectedCost = new BigDecimal("16.0");
+
+        assertEquals(expectedCost, rate.calculate(periodStay));
+    }
+
+
+
 }
