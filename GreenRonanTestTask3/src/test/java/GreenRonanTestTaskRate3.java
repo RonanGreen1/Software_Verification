@@ -3,7 +3,6 @@ package org.example;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -740,6 +739,27 @@ public class GreenRonanTestTaskRate3 {
         assertThrows(IllegalArgumentException.class, () -> {
             new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
         });
+    }
+
+    @Test
+    void test_36_RoundingInCalculate() {
+        CarParkKind kind = CarParkKind.STUDENT;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("3.333");
+        BigDecimal hourlyReducedRate = new BigDecimal("2.222");
+
+        Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+
+        Period periodStay = new Period(10, 12); // 2 hours
+        BigDecimal expectedCost = new BigDecimal("6.37"); // Rounded total
+
+        assertEquals(expectedCost, rate.calculate(periodStay));
     }
 
 
