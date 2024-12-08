@@ -28,6 +28,9 @@ public class Rate {
         if (!isValidPeriods(reducedPeriods) || !isValidPeriods(normalPeriods)) {
             throw new IllegalArgumentException("The periods are not valid individually");
         }
+        if (!isValidPeriods(reducedPeriods, normalPeriods)) {
+            throw new IllegalArgumentException("The periods overlaps");
+        }
         if (normalRate.compareTo(reducedRate) <= 0) {
             throw new IllegalArgumentException("The normal rate cannot be less or equal to the reduced rate");
         }

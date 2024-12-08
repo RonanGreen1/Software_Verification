@@ -1,0 +1,86 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>270</x><y>160</y><w>210</w><h>120</h></coordinates><panel_attributes>Driver
+--
+name
+PIN
+kind:CarParkKind
+allowed:Boolean
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>160</y><w>210</w><h>120</h></coordinates><panel_attributes>Rate
+--
+kind:CarParkKind
+hourlyNormalRate:BigDecimal
+hourlyReducedRate:BigDecimal
+--
+Rate(...)
+calculate(Period):BigDecimal</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1150</x><y>160</y><w>210</w><h>120</h></coordinates><panel_attributes>Period
+--
+startHour: int
+endHour: int
+--
+Period(int start, int end)
+duration():int
+overlaps(Period):Boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>430</y><w>210</w><h>90</h></coordinates><panel_attributes>CarParkSystem
+--
+version
+name
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1030</x><y>430</y><w>210</w><h>150</h></coordinates><panel_attributes>CarPark
+--
+id
+name
+capacity
+spacesAvailable
+kind:CarParkKind
+status:CarParkStatus
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>680</y><w>210</w><h>90</h></coordinates><panel_attributes>Gate
+--
+gateId
+location
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1130</x><y>680</y><w>130</w><h>110</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+CarParkKind
+--
+STAFF: Max payable €16.00
+STUDENT: 25% reduction above €5.50
+MANAGEMENT: Min payable €4.00
+VISITOR: First €10 free, 50% reduction after
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1130</x><y>810</y><w>130</w><h>90</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+CarParkStatus
+--
+OPEN
+CLOSED
+FULL
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>680</y><w>210</w><h>90</h></coordinates><panel_attributes>Stay
+--
+entryDateTime
+exitDateTime
+charge
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>220</y><w>190</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=*</panel_attributes><additional_attributes>170;210;170;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>220</y><w>80</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+m2=1..*</panel_attributes><additional_attributes>10;210;10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>180</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1..*
+reduced</panel_attributes><additional_attributes>10;20;180;20</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>230</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1..*
+normal</panel_attributes><additional_attributes>10;20;180;20</additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>270</y><w>290</w><h>180</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+rate</panel_attributes><additional_attributes>10;10;10;80;270;80;270;160</additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>460</y><w>240</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1..*</panel_attributes><additional_attributes>10;10;220;10</additional_attributes></element><element><id>Relation</id><coordinates><x>980</x><y>570</y><w>110</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1..*</panel_attributes><additional_attributes>90;10;90;150;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>690</y><w>330</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=*
+entry</panel_attributes><additional_attributes>310;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>720</y><w>330</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..1
+m2=*
+exit</panel_attributes><additional_attributes>310;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>270</y><w>40</w><h>430</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+log</panel_attributes><additional_attributes>10;410;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>270</y><w>70</w><h>430</h></coordinates><panel_attributes>lt=-
+m1=0..1
+m2=1
+current</panel_attributes><additional_attributes>10;410;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>510</y><w>150</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1..*</panel_attributes><additional_attributes>10;10;10;100;110;100;110;170</additional_attributes></element></diagram>

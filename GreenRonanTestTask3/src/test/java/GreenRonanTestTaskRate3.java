@@ -518,7 +518,7 @@ public class GreenRonanTestTaskRate3 {
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
         Period periodStay = new Period(10, 12);
-        BigDecimal expectedCost = new BigDecimal("10");
+        BigDecimal expectedCost = new BigDecimal("10.00");
 
 
         assertEquals(expectedCost, rate.calculate(periodStay));
@@ -541,7 +541,7 @@ public class GreenRonanTestTaskRate3 {
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
         Period periodStay = new Period(18, 20);
-        BigDecimal expectedCost = new BigDecimal("4");
+        BigDecimal expectedCost = new BigDecimal("4.00");
 
         assertEquals(expectedCost, rate.calculate(periodStay));
 
@@ -563,7 +563,7 @@ public class GreenRonanTestTaskRate3 {
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
         Period periodStay = new Period(6, 8);
-        BigDecimal expectedCost = new BigDecimal("7");
+        BigDecimal expectedCost = new BigDecimal("7.00");
 
 
         assertEquals(expectedCost, rate.calculate(periodStay));
@@ -586,7 +586,7 @@ public class GreenRonanTestTaskRate3 {
         Rate rate = new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
 
         Period periodStay = new Period(16, 18);
-        BigDecimal expectedCost = new BigDecimal("7");
+        BigDecimal expectedCost = new BigDecimal("7.00");
 
 
         assertEquals(expectedCost, rate.calculate(periodStay));
@@ -634,7 +634,7 @@ public class GreenRonanTestTaskRate3 {
 
         // Total cost = 15.00 (10.00 free, 50% of 5.00 = 2.50)
         Period periodStay = new Period(10, 13); // 3 normal hours = 15.00
-        BigDecimal expectedCost = new BigDecimal("2.5");
+        BigDecimal expectedCost = new BigDecimal("2.50");
 
         assertEquals(expectedCost, rate.calculate(periodStay));
     }
@@ -656,7 +656,7 @@ public class GreenRonanTestTaskRate3 {
 
         // Total cost = 3.00 (below minimum, so it should be 4.00)
         Period periodStay = new Period(10, 11); // 1 normal hour = 3.00
-        BigDecimal expectedCost = new BigDecimal("4.0");
+        BigDecimal expectedCost = new BigDecimal("4.00");
 
         assertEquals(expectedCost, rate.calculate(periodStay));
     }
@@ -700,7 +700,7 @@ public class GreenRonanTestTaskRate3 {
 
         // Total cost = 20.00 (but capped at 16.00)
         Period periodStay = new Period(10, 14); // 4 normal hours = 20.00
-        BigDecimal expectedCost = new BigDecimal("16.0");
+        BigDecimal expectedCost = new BigDecimal("16.00");
 
         assertEquals(expectedCost, rate.calculate(periodStay));
     }
