@@ -137,8 +137,8 @@ public class GreenRonanTestTaskRate3 {
         ArrayList<Period> reducedPeriods = new ArrayList<>();
         reducedPeriods.add(new Period(17, 24));
 
-        BigDecimal hourlyNormalRate = new BigDecimal("11");
-        BigDecimal hourlyReducedRate = new BigDecimal("10");
+        BigDecimal hourlyNormalRate = new BigDecimal("10");
+        BigDecimal hourlyReducedRate = new BigDecimal("9");
 
 
         assertDoesNotThrow(() -> {
@@ -619,7 +619,7 @@ public class GreenRonanTestTaskRate3 {
     }
 
     @Test
-    void testVisitorKindCalculation() {
+    void test_31_ValidVisitorKindCalculation() {
         CarParkKind kind = CarParkKind.VISITOR;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -641,7 +641,7 @@ public class GreenRonanTestTaskRate3 {
     }
 
     @Test
-    void testManagementKindCalculation() {
+    void test_32_ValidManagementKindCalculation() {
         CarParkKind kind = CarParkKind.MANAGEMENT;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -663,7 +663,7 @@ public class GreenRonanTestTaskRate3 {
     }
 
     @Test
-    void testStudentKindCalculation() {
+    void test_33_StudentKindCalculation() {
         CarParkKind kind = CarParkKind.STUDENT;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -681,11 +681,11 @@ public class GreenRonanTestTaskRate3 {
         Period periodStay = new Period(10, 13); // 3 normal hours = 15.00
         BigDecimal expectedCost = new BigDecimal("12.63");
 
-        assertEquals(expectedCost.setScale(2, RoundingMode.HALF_UP), rate.calculate(periodStay).setScale(2, RoundingMode.HALF_UP)); // Used to round up 1 decimal place
+        assertEquals(expectedCost, rate.calculate(periodStay));
     }
 
     @Test
-    void testStaffKindCalculation() {
+    void test_34_StaffKindCalculation() {
         CarParkKind kind = CarParkKind.STAFF;
 
         ArrayList<Period> normalPeriods = new ArrayList<>();
@@ -704,6 +704,42 @@ public class GreenRonanTestTaskRate3 {
         BigDecimal expectedCost = new BigDecimal("16.0");
 
         assertEquals(expectedCost, rate.calculate(periodStay));
+    }
+
+    @Test
+    void test_35_InvalidRatesExceeding10() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("11"); // Invalid
+        BigDecimal hourlyReducedRate = new BigDecimal("5");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
+    }
+
+    @Test
+    void test_35_InvalidRatesBelow0() {
+        CarParkKind kind = CarParkKind.STAFF;
+
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(9, 17));
+
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(17, 24));
+
+        BigDecimal hourlyNormalRate = new BigDecimal("0"); // Invalid
+        BigDecimal hourlyReducedRate = new BigDecimal("-1");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(kind, reducedPeriods, normalPeriods, hourlyNormalRate, hourlyReducedRate);
+        });
     }
 
 
